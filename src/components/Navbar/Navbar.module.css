@@ -1,0 +1,13 @@
+.nav {
+    grid-area: n;
+    background-color: burlywood;
+    width: 50px
+  }
+
+  .active {
+    color: white
+  }
+
+  .cool {
+    box-shadow: inset 11px 3px 10px 2px #00eeee
+  }
