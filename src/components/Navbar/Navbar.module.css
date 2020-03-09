@@ -4,9 +4,9 @@ a {
 
 .nav {
     grid-area: n;
-    background-color: burlywood;
-    width: 50px;
-    padding: 20px
+    background-color: #b1b1b1;
+    padding: 20px;
+    font-size: 1rem; 
   }
 
   .item a{
