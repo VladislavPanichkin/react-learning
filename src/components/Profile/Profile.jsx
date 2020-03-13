@@ -1,15 +1,15 @@
 import React from 'react';
 import classes from './Profile.module.css';
 import MyPosts from './MyPosts/MyPosts';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = () => {
-    return <div>
+    return (
         <div>
-            <img src='https://openimagedenoise.github.io/images/moana_16spp_oidn.jpg' />
+            <ProfileInfo />
+            <MyPosts />
         </div>
-        <div>ava + description</div>
-        <MyPosts />
-    </div>
+    )
 }
 
 export default Profile;
