@@ -4,13 +4,47 @@
 }
 
 .dialogsItems {
-    padding: 10px
+    padding: 10px;
+    text-align: center
 }
 
 .dialogsItems .active {
-    color: gold
+    display: flex;
+    align-items: center
+}
+
+.message {
+    width: 80px;
+    border: 1px solid black;
+    border-radius: 50%;
+    background: white
+}
+
+.message:nth-child(odd) {
+    float: right
 }
 
 .messages {
     padding: 10px
+}
+
+.userpic {
+    border: 1px solid black;
+    width: 26px;
+    padding: 4px;
+    border-radius: 50%;
+}
+
+a {
+    text-decoration: none;
+    color: darkblue;
+}
+
+.dialogs_container {
+    border: 1px solid black;
+    border-top: none;
+    border-right: none;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
 }

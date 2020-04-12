@@ -8,8 +8,8 @@ body {
   grid-template-areas:
   "h h"
   "n c";
-  grid-template-rows: 50px 3fr;
-  grid-template-columns: 9vw 10fr;
+  grid-template-rows: 7% 3fr;
+  grid-template-columns: 2fr 10fr;
   padding: 0 5%
   /* width: 1000px; */
 }
