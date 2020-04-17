@@ -1,11 +1,11 @@
-
+import {rerenderEntireTree} from "../render.js";
 
 let state = {
     profilePage: {
 
         posts: [
-            { id: 1, message: "Hi, how are you?", likes: "15" },
-            { id: 2, message: "It's my first post", likes: "20" }
+            { id: 1, message: "Hi, how are you?", likes: 15 },
+            { id: 2, message: "It's my first post", likes: 20 }
         ]
     },
 
@@ -38,4 +38,32 @@ let state = {
     }
 }
 
+export let sendMessage = (dialogsMessage) => {
+    let newMessage = {
+        id: 4,
+        message: dialogsMessage
+    };
+
+    state.dialogsPage.messages.push(newMessage)
+    rerenderEntireTree(state)
+}
+
+export let addPost = (postsMessage) => {
+    let newPost = {
+        id: 5,
+        message: postsMessage,
+        likes: 0
+    }
+    state.profilePage.posts.push(newPost)
+    rerenderEntireTree(state)
+}
+
+export let like = () => {
+    let likesCount = state.profilePage.posts.likes
+    likesCount+= 2
+    rerenderEntireTree(state)
+}
+
 export default state
+
+// разобраться с кнопкой лайк
