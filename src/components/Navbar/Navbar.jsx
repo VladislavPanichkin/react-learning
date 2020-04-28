@@ -6,7 +6,7 @@ import Friends from "./Friends/Friends"
 
 const Navbar = (props) => {
 
-    const currentFriends = props.state.friends.map(d => <Friends name={d.name} userpic={d.userpic} />);
+    const currentFriends = props.friends.map(d => <Friends name={d.name} userpic={d.userpic} />);
 
     return <nav className={s.nav}>
         <div className={s.item}>

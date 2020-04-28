@@ -9,18 +9,18 @@ const Dialogs = (props) => {
     let newMessage = React.createRef();
 
     let sendMessage = () => {
-        props.sendMessage()
+        props.store.sendMessage()
         newMessage.current.value = ''
-        props.updateNewMessageText('')
+        props.store.updateNewMessageText('')
     }
 
     let onMessageChange = () => {
         let text = newMessage.current.value
-        props.updateNewMessageText(text)
+        props.store.updateNewMessageText(text)
     }
 
-    let dialogsElements = props.state.dialogs.map(d => <DialogItem name={d.name} id={d.id} userpic={d.userpic} />);
-    let messagesElements = props.state.messages.map(m => <Message message={m.message} id={m.id} />);
+    let dialogsElements = props.state.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id} userpic={d.userpic} />);
+    let messagesElements = props.state.dialogsPage.messages.map(m => <Message message={m.message} id={m.id} />);
 
     return (
         <div className={s.dialogs}>
@@ -31,7 +31,7 @@ const Dialogs = (props) => {
                 <div className={s.dialogsItems}>
                     {messagesElements}
                     <div>
-                        <textarea onChange={onMessageChange} value={props.state.newMessageText} ref={newMessage}></textarea>
+                        <textarea onChange={onMessageChange} value={props.state.dialogsPage.newMessageText} ref={newMessage}></textarea>
                     </div>
                     <div>
                         <button onClick ={ sendMessage }>
