@@ -8,14 +8,12 @@ const MyPosts = (props) => {
     let newPost = React.createRef()
 
     let addPost = () => {
-        props.store.addPost()
-        newPost.current.value = ''
-        props.store.updateNewPostText('')
+        props.store.dispatch({ type: 'ADD-POST' })
     }
 
     let onPostChange = () => {
         let text = newPost.current.value
-        props.store.updateNewPostText(text)
+        props.store.dispatch({ type: 'UPDATE-NEW-POST-TEXT', newText: text })
     }
 
     let postsElements = props.state.profilePage.posts.map(p => <Post message={p.message} id={p.id} likes={p.likes}/>);
