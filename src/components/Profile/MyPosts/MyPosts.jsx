@@ -2,18 +2,21 @@ import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
 import { NavLink } from 'react-router-dom';
+import { addPostActionCreator, updateNewPostTextActionCreator} from '../../../redux/state'
 
 const MyPosts = (props) => {
 
+    debugger
     let newPost = React.createRef()
 
     let addPost = () => {
-        props.store.dispatch({ type: 'ADD-POST' })
+        props.store.dispatch(addPostActionCreator)
     }
 
     let onPostChange = () => {
         let text = newPost.current.value
-        props.store.dispatch({ type: 'UPDATE-NEW-POST-TEXT', newText: text })
+        let action = updateNewPostTextActionCreator
+        props.store.dispatch(action)
     }
 
     let postsElements = props.state.profilePage.posts.map(p => <Post message={p.message} id={p.id} likes={p.likes}/>);
