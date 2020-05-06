@@ -6,17 +6,16 @@ import { addPostActionCreator, updateNewPostTextActionCreator} from '../../../re
 
 const MyPosts = (props) => {
 
-    debugger
     let newPost = React.createRef()
 
     let addPost = () => {
-        props.store.dispatch(addPostActionCreator)
+        props.dispatch(addPostActionCreator)
     }
 
     let onPostChange = () => {
         let text = newPost.current.value
-        let action = updateNewPostTextActionCreator
-        props.store.dispatch(action)
+        let action = updateNewPostTextActionCreator(text)
+        props.dispatch(action)
     }
 
     let postsElements = props.state.profilePage.posts.map(p => <Post message={p.message} id={p.id} likes={p.likes}/>);

@@ -6,19 +6,17 @@ import Message from './Message/Message';
 import { sendMessageActionCreator, updateNewMessageActionCreator } from '../../redux/state'
 
 const Dialogs = (props) => {
-
     let newMessage = React.createRef();
-
+    
     let sendMessage = () => {
-        props.store.dispatch(sendMessageActionCreator)
+        props.dispatch(sendMessageActionCreator)
     }
 
     let onMessageChange = () => {
         let text = newMessage.current.value
-        let action = updateNewMessageActionCreator
-        props.store.dispatch(action)
+        let action = updateNewMessageActionCreator(text)
+        props.dispatch(action)
     }
-
     let dialogsElements = props.state.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id} userpic={d.userpic} />);
     let messagesElements = props.state.dialogsPage.messages.map(m => <Message message={m.message} id={m.id} />);
 
