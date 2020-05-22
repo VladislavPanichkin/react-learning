@@ -76,6 +76,7 @@ export let store = {
                 message: this._state.dialogsPage.newMessageText
             }
             this._state.dialogsPage.messages.push(newMessage)
+            this._state.dialogsPage.newMessageText = ''
             this._callSubscriber(this._state)
 
         } else if (action.type === UPDATE_NEW_POST_TEXT) {

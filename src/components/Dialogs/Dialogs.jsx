@@ -9,7 +9,7 @@ const Dialogs = (props) => {
     let newMessage = React.createRef();
     
     let sendMessage = () => {
-        props.dispatch(sendMessageActionCreator)
+        props.dispatch(sendMessageActionCreator())
     }
 
     let onMessageChange = () => {
