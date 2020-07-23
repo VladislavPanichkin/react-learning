@@ -17,8 +17,8 @@ const Dialogs = (props) => {
         props.updateNewMessage(text)
     }
 
-    let dialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id} userpic={d.userpic} />);
-    let messagesElements = props.dialogsPage.messages.map(m => <Message message={m.message} id={m.id} />);
+    let dialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id} userpic={d.userpic} key={d.id}/>);
+    let messagesElements = props.dialogsPage.messages.map(m => <Message message={m.message} id={m.id} key={m.id}/>);
 
     return (
         <div className={s.dialogs}>
@@ -29,7 +29,7 @@ const Dialogs = (props) => {
                 <div className={s.dialogsItems}>
                     {messagesElements}
                     <div>
-                        <textarea onChange={onMessageChange} value={props.newMessage} ref={newMessage}></textarea>
+                        <textarea onChange={onMessageChange} value={props.newMessageText} ref={newMessage}></textarea>
                     </div>
                     <div>
                         <button onClick ={onSendMessage}>

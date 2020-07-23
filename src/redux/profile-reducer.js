@@ -7,26 +7,27 @@ let initialState = {
         { id: 2, message: "It's my first post", likes: 20 }
     ],
 
-    newPostText: ""
+    newPostText: "asaas"
 }
 
 const profileReducer = (state = initialState, action) => {
+
+    let stateCopy
+
     switch (action.type) {
         case ADD_POST:
-            let newPost = {
-                id: 5,
-                message: state.newPostText,
-                likes: 0
+            let message = state.newPostText
+
+            return {
+                ...state,
+                posts:  [...state.posts, {id: 5, message: message, likes: 0}], 
+                newPostText: ""
             }
-            let stateCopy = {...state}
-            stateCopy.posts = [...state.posts]
-            stateCopy.posts.push(newPost)
-            stateCopy.newPostText = ""
-            return stateCopy
         case UPDATE_NEW_POST_TEXT: {
-            let stateCopy = {...state}
-            stateCopy.newPostText = action.newText
-            return stateCopy
+            return {
+                ...state,
+                newPostText: action.newText
+            } 
         }
         default:
             return state
@@ -37,6 +38,3 @@ export const addPostActionCreator = () => ({ type: ADD_POST })
 export const updateNewPostTextActionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text })
 
 export default profileReducer
-
-
-//47 DONE + CHANGE OTHER REDUCERS ACCORDING TO THE PURE FUNCTIONS DESIGN (COPY STATE, NOT PASS IT STRAIGHT TO FUNCTIONS)
