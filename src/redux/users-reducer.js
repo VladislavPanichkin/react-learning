@@ -4,23 +4,17 @@ const SET_USERS = 'SET_USERS'
 
 
 let initialState = {
-    users: [
-        { id: 1, photoUrl: 'https://psalaw.ro/wp-content/uploads/2020/02/b884fbca-f44c-49b9-ae07-2e65184e632b-767x1024.jpg', 
-            followed: true, name: "Jack", status: "Yes.", location: { city: 'Murmansk', country: 'Russia' } },
-        { id: 2, photoUrl: 'https://psalaw.ro/wp-content/uploads/2020/02/b884fbca-f44c-49b9-ae07-2e65184e632b-767x1024.jpg', 
-            followed: false, name: "John", status: "No.", location: { city: 'Saint-Petersburg', country: 'Russia' } },
-        { id: 3, photoUrl: 'https://psalaw.ro/wp-content/uploads/2020/02/b884fbca-f44c-49b9-ae07-2e65184e632b-767x1024.jpg',  
-            followed: true, name: "Mike", status: "Yes.", location: { city: 'New-York', country: 'USA' } }
-    ],
+    users: [],
 }
 
 const usersReducer = (state = initialState, action) => {
+
     switch (action.type) {
-        case FOLLOW:
+        case FOLLOW: 
             return {
                 ...state,
                 users: state.users.map(u => {
-                    if (u.id === action.userId) {
+                    if (u.id === action.id) {
                         return {...u, followed: true}
                     }
                     return u;
@@ -31,18 +25,18 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 users: state.users.map(u => {
-                    if (u.id === action.userId) {
+                    if (u.id === action.id) {
                         return {...u, followed: false}
-                        console.log('unfollowed')
                     }
                     return u;
                 })
             }
 
-        case SET_USERS: {
+        case SET_USERS: 
             return { ...state, users: [...state.users, ...action.users] }
-        }
-        default: return state
+
+        default: 
+            return state
     }
 }
 
