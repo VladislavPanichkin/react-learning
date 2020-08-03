@@ -5,16 +5,27 @@ import userPhoto from '../../assets/images/userPhoto.png'
 
 class Users extends React.Component {
 
-    constructor(props) {
-        super(props);
-
+    componentDidMount() {
         Axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
             this.props.setUsers(response.data.items)
         })
     }
 
     render() {
+
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+
+        let pages = [];
+        for(let i = 1; i <= pagesCount; i++){
+            pages.push(i)
+        }
+        
         return <div>
+                <div>
+                    {pages.map(e => {
+                        return <span className={this.props.currentPage === e && styles.selectedPage}>{e}</span>
+                    })}
+                </div>
             {
                 this.props.users.map(u => <div key={u.id}>
                     <span>
