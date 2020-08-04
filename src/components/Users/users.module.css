@@ -1,7 +1,12 @@
 .userPhoto {
-    width: 10%
+    width: 7vw
 }
 
 .selectedPage {
     font-weight: bold
 }
+
+.numbers:hover {
+    cursor: pointer
+}
+  
