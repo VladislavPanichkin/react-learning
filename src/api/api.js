@@ -16,5 +16,5 @@ export const userApi = {
             });
     }
 
-    followUser ()
+    //followUser ()
 }
