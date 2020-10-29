@@ -6,3 +6,17 @@ background-color:#4a76a8;
 .header img {
 width: 50px;
 }
+
+.loginBlock {
+    float: right;
+}
+
+.loginBlock a, .loginBlock div {
+    color: white;
+    text-decoration: none;
+    top: 50%;
+}
+
+.loginBlock a:hover {
+    text-decoration: underline;
+}
