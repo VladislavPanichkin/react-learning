@@ -1,6 +1,8 @@
 import React from 'react';
-import s from './ProfileInfo.module.css';
+
+import style from './ProfileInfo.module.css';
 import Preloader from '../../common/Preloader/Preloader';
+import ProfileStatus from './ProfileStatus';
 
 const ProfileInfo = (props) => {
 
@@ -9,11 +11,15 @@ const ProfileInfo = (props) => {
     }
     return (
         <div>
-            <div>
+            {/* <div>
                 <img src='https://openimagedenoise.github.io/images/moana_16spp_oidn.jpg' />
-            </div>
-            <div className={s.descriptionBlock}>
-                <img src={props.profile.photos.large} alt=""/>
+            </div> */}
+            <div className={style.descriptionBlock}>
+                <img src={props.profile.photos.large} className={style.avatar} alt=""/>
+                <ProfileStatus 
+                    status={props.status}
+                    updateStatus={props.updateStatus}
+                />
             </div>
         </div>
     )

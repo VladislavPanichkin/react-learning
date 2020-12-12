@@ -1,35 +1,26 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import { NavLink } from 'react-router-dom';
+import NewPostReduxForm from './NewPostForm';
 
 const MyPosts = (props) => {
 
-    let newPost = React.createRef()
+    let postsElements = props.posts.map(p => <Post message={p.message} id={p.id} likes={p.likes} />);
 
-    let onAddPost = () => {
-        props.addPost()
+    const onSubmit = (formData) => {
+        debugger;
+        props.addPost(formData.post)
     }
 
-    let onPostChange = () => {
-        let text = newPost.current.value;
-        props.updateNewPostText(text)
-    }
-
-    let postsElements = props.posts.map(p => <Post message={p.message} id={p.id} likes={p.likes}/>);
-
-    return <div className={s.postsBlock}>
-        <h3>My Posts</h3>
-        <div>
-            <textarea onChange={onPostChange} value={props.newPostText} ref={newPost}></textarea>
+    return (
+        <div className={s.postsBlock}>
+            <h3>My Posts</h3>
+            <NewPostReduxForm onSubmit={onSubmit}/>
+            <div className={s.posts}>
+                {postsElements}
+            </div>
         </div>
-        <div>
-            <button onClick={onAddPost}>Add Post</button>
-        </div>
-        <div className={s.posts}>
-            {postsElements}
-        </div>
-    </div>
+    )
 }
 
 export default MyPosts;

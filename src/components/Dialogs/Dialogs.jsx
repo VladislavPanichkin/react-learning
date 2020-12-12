@@ -1,24 +1,15 @@
 import React from 'react';
 import s from './Dialogs.module.css';
-import { NavLink } from 'react-router-dom';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
+import MessageReduxForm from './MessageForm';
 
 const Dialogs = (props) => {
 
-    let newMessage = React.createRef()
+    let dialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id} userpic={d.userpic} key={d.id} />);
+    let messagesElements = props.dialogsPage.messages.map(m => <Message message={m.message} id={m.id} key={m.id} />);
 
-    let onSendMessage = () => {
-        props.sendMessage()
-    }
-
-    let onMessageChange = () => {
-        let text = newMessage.current.value;
-        props.updateNewMessage(text)
-    }
-
-    let dialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id} userpic={d.userpic} key={d.id}/>);
-    let messagesElements = props.dialogsPage.messages.map(m => <Message message={m.message} id={m.id} key={m.id}/>);
+    const onSubmit = formData => props.sendMessage(formData.message)
 
     return (
         <div className={s.dialogs}>
@@ -28,14 +19,7 @@ const Dialogs = (props) => {
             <div className={s.dialogs_container}>
                 <div className={s.dialogsItems}>
                     {messagesElements}
-                    <div>
-                        <textarea onChange={onMessageChange} value={props.newMessageText} ref={newMessage}></textarea>
-                    </div>
-                    <div>
-                        <button onClick ={onSendMessage}>
-                            Add message
-                        </button>
-                    </div>
+                    <MessageReduxForm onSubmit={onSubmit} />
                 </div>
             </div>
         </div>
